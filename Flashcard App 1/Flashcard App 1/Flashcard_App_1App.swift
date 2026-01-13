@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct Flashcard_App_1App: App {
+    
+    @StateObject private var store = DeckStore()
+    @AppStorage("DarkMode") var isDarkMode: Bool = false
+    @AppStorage("showScore") private var showScore: Bool = true
+    @AppStorage("Repeat") private var showSpacedRepetition: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack{
+                DeckListView()
+            }
+            .preferredColorScheme(isDarkMode ? .dark : .light)
+            //.showScore(showScore ? 10 : 0)
+            //.buttonRepeatBehavior(.automatic)
+            .environmentObject(store)
         }
     }
 }

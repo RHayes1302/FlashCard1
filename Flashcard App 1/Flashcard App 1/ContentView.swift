@@ -8,17 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var store: DeckStore
+    @State private var showingAddDeck = false // Controls the pop-up
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(store.decks) { deck in
+                    NavigationLink(destination: DeckDetailView(deckID: deck.id)) {
+                        Text(deck.name)
+                    }
+                }
+                .onDelete(perform: store.deleteDeck)
+            }
+            .navigationTitle("Flashcards")
+            .toolbar {
+                // This puts the button in the top right
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showingAddDeck = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            // This is the "doorway" that opens the AddDeckView
+            .sheet(isPresented: $showingAddDeck) {
+                AddDeckView()
+            }
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
