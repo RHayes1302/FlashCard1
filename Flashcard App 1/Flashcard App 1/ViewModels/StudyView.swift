@@ -12,7 +12,7 @@ struct StudyView: View {
     @Environment(\.dismiss) private var dismiss
     let deck: Deck
     
-    // 1. Link to all settings from SettingsView
+
     @AppStorage("shuffleCards") private var shuffleCards = true
     @AppStorage("showBackFirst") private var showBackFirst = false
     @AppStorage("cardsPerSession") private var cardsPerSession = 10
@@ -26,7 +26,7 @@ struct StudyView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            // 2. Conditional Scoreboard
+            // Scoreboard
             if showScore {
                 Text("Score: \(score)")
                     .font(.headline)
@@ -69,7 +69,7 @@ struct StudyView: View {
         }
     }
 
-    // 3. Setup logic for Shuffle, Cards Per Session, and Back First
+   
     private func setupSession() {
         var cards = deck.cards
         
@@ -77,10 +77,10 @@ struct StudyView: View {
             cards.shuffle()
         }
         
-        // Only take the amount of cards chosen in settings
+    
         sessionCards = Array(cards.prefix(cardsPerSession))
         
-        // Start with the back showing if preferred
+       
         if showBackFirst {
             isFlipped = true
         }

@@ -27,18 +27,18 @@ struct DeckListView: View {
             }
             .navigationTitle("Flashcards")
             
-            // --- THIS SECTION CONTROLS THE ICONS ---
+           
             .toolbar {
-                // Settings on the Left (Leading)
+                
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         showingSettings = true
                     } label: {
-                        Image(systemName: "gearshape.fill") // Using gearshape.fill for better visibility
+                        Image(systemName: "gearshape.fill")
                     }
                 }
                 
-                // Plus on the Right (Trailing)
+         
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showingAddDeck = true
@@ -47,7 +47,7 @@ struct DeckListView: View {
                     }
                 }
             }
-            // ---------------------------------------
+          
             
             .sheet(isPresented: $showingSettings) {
                 NavigationStack {

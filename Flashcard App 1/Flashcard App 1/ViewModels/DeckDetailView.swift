@@ -26,7 +26,7 @@ struct DeckDetailView: View {
                                 Text(card.back).font(.subheadline).foregroundStyle(.secondary)
                             }
                         }
-                        // --- FIX: store (no $) and matching labels (in/at) ---
+                       
                         .onDelete { offsets in
                             store.deleteCard(in: deckID, at: offsets)
                         }

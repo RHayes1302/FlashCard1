@@ -21,8 +21,7 @@ struct Flashcard_App_1App: App {
                 DeckListView()
             }
             .preferredColorScheme(isDarkMode ? .dark : .light)
-            //.showScore(showScore ? 10 : 0)
-            //.buttonRepeatBehavior(.automatic)
+            
             .environmentObject(store)
         }
     }

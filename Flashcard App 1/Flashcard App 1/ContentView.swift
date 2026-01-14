@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var store: DeckStore
-    @State private var showingAddDeck = false // Controls the pop-up
+    @State private var showingAddDeck = false
     
     var body: some View {
         NavigationStack {
@@ -32,7 +32,7 @@ struct ContentView: View {
                     }
                 }
             }
-            // This is the "doorway" that opens the AddDeckView
+            // opens the AddDeckView
             .sheet(isPresented: $showingAddDeck) {
                 AddDeckView()
             }

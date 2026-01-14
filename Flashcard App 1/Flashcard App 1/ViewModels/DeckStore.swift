@@ -30,13 +30,13 @@ final class DeckStore: ObservableObject {
         }
     }
 
-    // --- ADDED THIS FUNCTION ---
+   
     func deleteCard(in deckID: UUID, at offsets: IndexSet) {
         if let index = decks.firstIndex(where: { $0.id == deckID }) {
             decks[index].cards.remove(atOffsets: offsets)
         }
     }
-    // ---------------------------
+
 
     func updateLastStudied(for deckID: UUID) {
         if let index = decks.firstIndex(where: { $0.id == deckID }) {

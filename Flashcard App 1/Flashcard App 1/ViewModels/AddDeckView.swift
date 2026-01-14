@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddDeckView: View {
-    // 1. Ensure this is an EnvironmentObject
+   
     @EnvironmentObject var store: DeckStore
     @Environment(\.dismiss) private var dismiss
     
@@ -36,7 +36,7 @@ struct AddDeckView: View {
                     Button("Add") {
                         let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
                         if !trimmedName.isEmpty {
-                            // 2. FIXED CALL: Ensure we call the function from the store instance
+                            
                             store.addDeck(name: trimmedName)
                             dismiss()
                         }
